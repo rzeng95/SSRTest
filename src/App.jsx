@@ -3,11 +3,10 @@ import { hot } from 'react-hot-loader';
 
 class App extends Component {
   render() {
-    console.log('app isClient', __CLIENT__);
-    console.log('app isServer', __SERVER__);
+    console.log('isClient', __CLIENT__, ' | isServer', __SERVER__);
     return (
       <div>
-        Hello worldxx
+        Hello worldxxxx
       </div>
     );
   }

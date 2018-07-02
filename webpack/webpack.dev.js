@@ -8,10 +8,6 @@ const clientConfig = {
   entry: {
     app: ['./src/index.js', 'webpack-hot-middleware/client'],
   },
-  stats: 'errors-only',
-  devServer: {
-    stats: 'errors-only',
-  },
   mode: 'development',
   devtool: 'inline-source-map',
   module: {
