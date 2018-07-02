@@ -7,10 +7,7 @@ const nodeExternals = require('webpack-node-externals');
 const clientConfig = {
   entry: {
     app: ['./src/index.js', 'webpack-hot-middleware/client'],
-  },
-  stats: 'errors-only',
-  devServer: {
-    stats: 'errors-only',
+    // app: './src/index.js',
   },
   mode: 'development',
   devtool: 'inline-source-map',
@@ -55,7 +52,10 @@ const serverConfig = {
   externals: [nodeExternals()],
   module: {
     rules: [
-      { test: /\.(js)$/, use: 'babel-loader' },
+      {
+        test: /\.jsx?$/,
+        use: 'babel-loader',
+      },
     ],
   },
   plugins: [
@@ -65,6 +65,9 @@ const serverConfig = {
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   output: {
     filename: 'server.bundle.js',
     path: path.resolve(__dirname, '../dist'),

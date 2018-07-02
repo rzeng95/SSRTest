@@ -7,8 +7,13 @@
   "scripts": {
     "lint": "eslint --ext .js --ext .jsx ./src ./webpack",
     "build": "webpack --config ./webpack/webpack.prod.js",
+    "build-dev": "webpack --config ./webpack/webpack.dev.js",
     "start": "NODE_ENV=development nodemon ./src/server.js",
-    "start-dev": "webpack --config ./webpack/webpack.dev.js -w && nodemon ./src/server.js"
+    "server": "NODE_ENV=development webpack --config ./webpack/webpack.dev.js && nodemon ./dist/server.bundle.js",
+    "watch": "NODE_ENV=development webpack --config ./webpack/webpack.dev.js --watch && nodemon ./dist/server.bundle.js",
+    "watch2": "NODE_ENV=development webpack -w && node ./dist/server.bundle.js",
+    "server2": "NODE_ENV=development node ./dist/server.bundle.js",
+    "start-dev": "NODE_ENV=development webpack --config ./webpack/webpack.dev.js -w && nodemon ./dist/server.bundle.js"
   },
   "keywords": [],
   "author": "",
@@ -38,6 +43,7 @@
     "express": "^4.16.3",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "react-hot-loader": "^4.3.3"
+    "react-hot-loader": "^4.3.3",
+    "serialize-javascript": "^1.5.0"
   }
 }
