@@ -6,7 +6,7 @@ class App extends Component {
     console.log('isClient', __CLIENT__, ' | isServer', __SERVER__);
     return (
       <div>
-        Hello worldxxxx
+        Hello world
       </div>
     );
   }

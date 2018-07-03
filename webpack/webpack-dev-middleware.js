@@ -9,7 +9,7 @@ const compiler = webpack(clientConfig);
 
 app.use(webpackDevMiddleware(compiler, {
   publicPath: clientConfig.output.publicPath,
-  logLevel: 'warn',
+  // logLevel: 'warn',
 }));
 
 app.use(require('webpack-hot-middleware')(compiler));

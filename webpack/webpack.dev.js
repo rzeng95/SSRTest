@@ -51,7 +51,13 @@ const serverConfig = {
   externals: [nodeExternals()],
   module: {
     rules: [
-      { test: /\.(js)$/, use: 'babel-loader' },
+      {
+        test: /\.jsx?$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader', // TODO: try babel-loader?cacheDirectory=true
+        },
+      },
     ],
   },
   plugins: [
@@ -61,6 +67,9 @@ const serverConfig = {
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   output: {
     filename: 'server.bundle.js',
     path: path.resolve(__dirname, '../dist'),
