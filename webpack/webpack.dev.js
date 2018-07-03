@@ -1,32 +1,30 @@
 const webpack = require('webpack');
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+// const HtmlWebpackPlugin = require('html-webpack-plugin');
 const nodeExternals = require('webpack-node-externals');
 
 const clientConfig = {
   entry: {
-    app: ['./src/index.js', 'webpack-hot-middleware/client'],
+    client: ['./src/index.js', 'webpack-hot-middleware/client'],
   },
   mode: 'development',
   devtool: 'inline-source-map',
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader', // TODO: try babel-loader?cacheDirectory=true
-        },
+        use: 'babel-loader', // TODO: try babel-loader?cacheDirectory=true
       },
     ],
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new webpack.HotModuleReplacementPlugin(),
-    new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, '../src/index.html'),
-    }),
+    // new HtmlWebpackPlugin({
+    //   template: path.resolve(__dirname, '../src/index.html'),
+    // }),
     new webpack.DefinePlugin({
       __CLIENT__: true,
       __SERVER__: false,
@@ -47,11 +45,15 @@ const serverConfig = {
   entry: './src/server.js',
   target: 'node',
   mode: 'development',
-  devtool: 'inline-source-map',
+  devtool: 'source-map', // TODO: find the right one
   externals: [nodeExternals()],
   module: {
     rules: [
-      { test: /\.(js)$/, use: 'babel-loader' },
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: 'babel-loader', // TODO: try babel-loader?cacheDirectory=true
+      },
     ],
   },
   plugins: [
@@ -61,6 +63,9 @@ const serverConfig = {
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
   ],
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   output: {
     filename: 'server.bundle.js',
     path: path.resolve(__dirname, '../dist'),

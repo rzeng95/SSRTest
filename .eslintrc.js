@@ -3,6 +3,10 @@ module.exports = {
   env: {
     browser: true,
   },
+  globals: {
+    __CLIENT__: false,
+    __SERVEr: true,
+  },
   rules: {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'react/prefer-stateless-function': 'off',

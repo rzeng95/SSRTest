@@ -7,7 +7,12 @@
   "scripts": {
     "lint": "eslint --ext .js --ext .jsx ./src ./webpack",
     "build": "webpack --config ./webpack/webpack.prod.js",
+    "build-dev": "webpack --config ./webpack/webpack.dev.js",
     "start": "NODE_ENV=development nodemon ./src/server.js",
+    "start2": "node ./dist/server.bundle.js",
+    "start3": "webpack --config ./webpack/webpack.dev.js -w && nodemon ./dist/server.bundle.js",
+    "start4": "NODE_ENV=development babel-watch src/server.js",
+    "start5": "babel-watch src/server.js",
     "start-dev": "webpack --config ./webpack/webpack.dev.js -w && nodemon ./src/server.js"
   },
   "keywords": [],
