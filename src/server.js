@@ -1,19 +1,27 @@
-const express = require('express');
+import React from 'react';
+import { renderToString } from 'react-dom/server';
 
-const app = express();
+import App from './App';
 
-if (process.env.NODE_ENV === 'development') {
-  // eslint-disable-next-line global-require
-  const webpackDevMiddleware = require('../webpack/webpack-dev-middleware');
-  app.use(webpackDevMiddleware);
+// webpack-hot-server-middleware expects a function that returns an express middleware
+function serverRenderer() {
+  return (req, res) => {
+    const markup = renderToString(<App />);
+
+    res.send(`
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>SSR</title>
+          <script src="/client.bundle.js" defer></script>
+        </head>
+
+        <body>
+          <div id="root">${markup}</div>
+        </body>
+      </html>
+    `);
+  };
 }
 
-
-app.get('/hi', (req, res) => {
-  res.send('hello');
-});
-
-app.listen(3000, () => {
-  // eslint-disable-next-line no-console
-  console.log('Server running on port 3000!\n');
-});
+export default serverRenderer;
