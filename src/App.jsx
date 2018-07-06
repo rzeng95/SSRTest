@@ -6,14 +6,14 @@ class App extends Component {
     super();
     this.state = {
       counter: 1,
-    }
+    };
   }
 
   render() {
     console.log('isClient', __CLIENT__, ' | isServer', __SERVER__);
     return (
       <div>
-        Counter hxxi { this.state.counter }
+        Counter { this.state.counter }
         <div onClick={ () => this.setState((prevState) => ({ counter: prevState.counter += 1 }))}>
           click me
         </div>

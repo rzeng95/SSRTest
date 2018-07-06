@@ -12,7 +12,7 @@ function serverRenderer() {
       <!DOCTYPE html>
       <html>
         <head>
-          <title>SSR with RR</title>
+          <title>SSR</title>
           <script src="/client.bundle.js" defer></script>
         </head>
 
