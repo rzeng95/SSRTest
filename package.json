@@ -7,17 +7,9 @@
   "scripts": {
     "lint": "eslint --ext .js --ext .jsx ./src ./webpack",
     "build": "webpack --config ./webpack/webpack.prod.js",
-    "start": "NODE_ENV=development nodemon ./src/server.js",
-    "start2": "webpack --config ./webpack/webpack.dev.js && node ./dist/server.bundle.js",
-    "start3": "webpack --config ./webpack/webpack.dev.js -w && node ./dist/server.bundle.js",
-    "start4": "webpack --config ./webpack/webpack.dev.js -w",
-    "start5": "node ./dist/server.bundle.js",
-    "start6": "concurrently \"npm run start4\" \"npm run start5\"",
-    "start7": "webpack --config ./webpack/webpack.dev.js -w && nodemon ./dist/server.bundle.js",
-    "start-dev": "webpack --config ./webpack/webpack.dev.js -w && nodemon ./src/server.js",
-    "s1": "node app.js",
+    "s1": "node ./src/index.js",
     "b1": "webpack --config ./webpack/webpack.prod.js",
-    "p1": "NODE_ENV=production node app.js"
+    "p1": "NODE_ENV=production node ./src/index.js"
   },
   "keywords": [],
   "author": "",

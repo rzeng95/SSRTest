@@ -7,14 +7,14 @@ const app = express();
 if (process.env.NODE_ENV === 'production') {
   console.log('[server] using prod server');
   /* eslint-disable-next-line import/no-unresolved */
-  const serverRender = require('./dist/server.bundle.js').default;
+  const serverRender = require('../dist/server.bundle.js').default;
   app.get('/hi', (req, res) => res.send('hi'));
 
-  app.use(express.static(path.resolve(__dirname, 'dist')));
+  app.use(express.static(path.resolve(__dirname, '../dist')));
   app.use(serverRender());
 } else {
   console.log('[server] using dev server');
-  const webpackDevMiddleware = require('./webpack/webpack-dev-middleware');
+  const webpackDevMiddleware = require('../webpack/webpack-dev-middleware');
   app.use(webpackDevMiddleware);
 }
 
