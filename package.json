@@ -8,7 +8,16 @@
     "lint": "eslint --ext .js --ext .jsx ./src ./webpack",
     "build": "webpack --config ./webpack/webpack.prod.js",
     "start": "NODE_ENV=development nodemon ./src/server.js",
-    "start-dev": "webpack --config ./webpack/webpack.dev.js -w && nodemon ./src/server.js"
+    "start2": "webpack --config ./webpack/webpack.dev.js && node ./dist/server.bundle.js",
+    "start3": "webpack --config ./webpack/webpack.dev.js -w && node ./dist/server.bundle.js",
+    "start4": "webpack --config ./webpack/webpack.dev.js -w",
+    "start5": "node ./dist/server.bundle.js",
+    "start6": "concurrently \"npm run start4\" \"npm run start5\"",
+    "start7": "webpack --config ./webpack/webpack.dev.js -w && nodemon ./dist/server.bundle.js",
+    "start-dev": "webpack --config ./webpack/webpack.dev.js -w && nodemon ./src/server.js",
+    "s1": "node app.js",
+    "b1": "webpack --config webpack.prod.js",
+    "p1": "NODE_ENV=production node app.js"
   },
   "keywords": [],
   "author": "",
@@ -19,7 +28,9 @@
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "babel-watch": "^2.0.7",
     "clean-webpack-plugin": "^0.1.19",
+    "concurrently": "^3.6.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb": "^17.0.0",
     "eslint-plugin-import": "^2.13.0",
@@ -31,8 +42,10 @@
     "webpack-cli": "^3.0.8",
     "webpack-dev-middleware": "^3.1.3",
     "webpack-hot-middleware": "^2.22.2",
+    "webpack-hot-server-middleware": "^0.5.0",
     "webpack-merge": "^4.1.3",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-node-externals": "^1.7.2",
+    "webpack-shell-plugin": "^0.5.0"
   },
   "dependencies": {
     "express": "^4.16.3",
