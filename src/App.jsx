@@ -13,7 +13,7 @@ class App extends Component {
     console.log('isClient', __CLIENT__, ' | isServer', __SERVER__);
     return (
       <div>
-        Counter balsxxxfads { this.state.counter }
+        Counter hxxi { this.state.counter }
         <div onClick={ () => this.setState((prevState) => ({ counter: prevState.counter += 1 }))}>
           click me
         </div>
