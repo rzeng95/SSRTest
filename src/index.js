@@ -10,6 +10,7 @@ if (process.env.NODE_ENV === 'production') {
   const serverRender = require('../dist/server.bundle.js').default;
   app.get('/hi', (req, res) => res.send('hi'));
 
+  // this will be unnecessary once client bundle is served from CDN
   app.use(express.static(path.resolve(__dirname, '../dist')));
   app.use(serverRender());
 } else {

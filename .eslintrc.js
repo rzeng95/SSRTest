@@ -5,7 +5,7 @@ module.exports = {
   },
   globals: {
     __CLIENT__: false,
-    __SERVEr: false,
+    __SERVER__: false,
   },
   rules: {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
