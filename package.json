@@ -16,7 +16,7 @@
     "start7": "webpack --config ./webpack/webpack.dev.js -w && nodemon ./dist/server.bundle.js",
     "start-dev": "webpack --config ./webpack/webpack.dev.js -w && nodemon ./src/server.js",
     "s1": "node app.js",
-    "b1": "webpack --config webpack.prod.js",
+    "b1": "webpack --config ./webpack/webpack.prod.js",
     "p1": "NODE_ENV=production node app.js"
   },
   "keywords": [],

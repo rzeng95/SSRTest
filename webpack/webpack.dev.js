@@ -32,7 +32,7 @@ const clientConfig = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
   },
 };
@@ -69,7 +69,7 @@ const serverConfig = {
   },
   output: {
     filename: '[name].bundle.js',
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, '../dist'),
     publicPath: '/',
     libraryTarget: 'commonjs2',
   },

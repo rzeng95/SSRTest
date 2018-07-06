@@ -19,7 +19,7 @@ if (process.env.NODE_ENV === 'production') {
   const webpackHotServerMiddleware = require('webpack-hot-server-middleware');
 
   // const webpackConfig = require('./webpack.config');
-  const webpackConfig = require('./webpack.dev');
+  const webpackConfig = require('./webpack/webpack.dev');
   const multiCompiler = webpack(webpackConfig);
 
   console.log('[server] using dev server');
