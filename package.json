@@ -7,9 +7,9 @@
   "scripts": {
     "lint": "eslint --ext .js --ext .jsx ./src ./webpack",
     "build": "webpack --config ./webpack/webpack.prod.js",
-    "s1": "node ./src/index.js",
-    "b1": "webpack --config ./webpack/webpack.prod.js",
-    "p1": "NODE_ENV=production node ./src/index.js"
+    "start": "node ./src/index.js",
+    "build": "webpack --config ./webpack/webpack.prod.js",
+    "start:prod": "NODE_ENV=production node ./src/index.js"
   },
   "keywords": [],
   "author": "",

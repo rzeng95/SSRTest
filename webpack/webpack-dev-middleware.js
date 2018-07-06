@@ -11,22 +11,23 @@ const app = express();
 const multiCompiler = webpack(webpackConfig);
 const clientCompiler = multiCompiler.compilers.find(compiler => compiler.name === 'client');
 
-app.get('/hi', (req, res) => res.send('hixxx'));
-
 app.use(
   webpackDevMiddleware(multiCompiler, {
     publicPath: webpackConfig[0].output.path,
-    // stats: "minimal"
-    stats: 'minimal',
+    stats: {
+      colors: true,
+      modules: false,
+      version: false,
+      entrypoints: false,
+      builtAt: false,
+    },
     serverSideRender: true,
   }),
 );
-app.use(
-  // webpackHotMiddleware(multiCompiler.compilers.find(compiler => compiler.name === 'client')),
-  webpackHotMiddleware(clientCompiler),
-);
+
+app.use(webpackHotMiddleware(clientCompiler));
+
 app.use(webpackHotServerMiddleware(multiCompiler, {
-  // serverRendererOptions: { outputPath: webpackConfig[0].output.path },
   chunkName: 'server',
 }));
 
