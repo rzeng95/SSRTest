@@ -1,24 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const notifier = require('node-notifier');
-
-// Custom webpack plugin
-function OnCompletionPlugin() {}
-OnCompletionPlugin.prototype.apply = (compiler) => {
-  compiler.hooks.done.tap('on-complete-done', () => {
-    notifier.notify({
-      title: 'Webpack: Build Success!',
-      message: '🙌 🙌 🙌',
-    });
-  });
-
-  compiler.hooks.failed.tap('on-complete-failed', () => {
-    notifier.notify({
-      title: 'Webpack: Build Failed',
-      message: 'Please check console for errors',
-    });
-  });
-};
 
 const clientConfig = {
   name: 'client',
@@ -45,7 +26,6 @@ const clientConfig = {
       __SERVER__: false,
       'process.env.NODE_ENV': JSON.stringify('development'),
     }),
-    new OnCompletionPlugin(),
   ],
   resolve: {
     extensions: ['.js', '.jsx'],

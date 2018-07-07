@@ -22,7 +22,7 @@ app.use(
       builtAt: false,
     },
     serverSideRender: true,
-  }),
+  })
 );
 
 app.use(webpackHotMiddleware(clientCompiler));
